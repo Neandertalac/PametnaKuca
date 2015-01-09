@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TemperatureActivity"
+            android:label="@string/title_activity_temperature" >
+        </activity>
+        <activity
+            android:name=".LightActivity"
+            android:label="@string/title_activity_light" >
+        </activity>
+        <activity
+            android:name=".AirCondActivity"
+            android:label="@string/title_activity_air_cond" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

@@ -7,6 +7,11 @@
     <string name="lightBtnText">Svjetlo</string>
     <string name="airCondBtnText">Klima</string>
     <string name="settingsBtnText">Opcije</string>
-    <string name="fa_gear">&#xf013;</string>
+    <string name="fa_gear"></string>
+    <string name="title_activity_temperature">TemperatureActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_light">LightActivity</string>
+    <string name="title_activity_air_cond">AirCondActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
