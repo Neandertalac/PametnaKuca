@@ -1,36 +1,55 @@
 package hr.fer.tel.ruazosa.iantolkovic.pametnakuca;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class SettingsActivity extends Activity {
+
+    public static final String PREFS_NAME="MyPrefsFile";
+    private static final String PATTERN ="^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        final Button enterIpBtn = (Button) findViewById(R.id.enterIpBtn);
+        final EditText ipAddress = (EditText) findViewById(R.id.ipAdress);
+
+        enterIpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String IPAddress = ipAddress.getText().toString();
+                if(!checkIP(IPAddress)){
+                    Toast.makeText(getApplicationContext(), "Unjeli ste nepostojeći IP", Toast.LENGTH_LONG).show();
+                }else{
+                    SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString("serverIP",IPAddress);
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(),"IP je pohranjen",Toast.LENGTH_LONG).show();
+                    Intent returnIntent = new Intent();
+                    setResult(RESULT_OK, returnIntent);
+                    finish();
+                }
+            }
+        });
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.settings, menu);
-        return true;
+    public static boolean checkIP (String IP){
+        Pattern pattern = Pattern.compile(PATTERN);
+        Matcher matcher = pattern.matcher(IP);
+        return matcher.matches();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

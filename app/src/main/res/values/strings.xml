@@ -12,6 +12,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_light">LightActivity</string>
     <string name="title_activity_air_cond">AirCondActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">IP adresa</string>
+    <string name="enterIPAdressText">Unesite IP adresu poslužitelja: </string>
+    <string name="ipEnterBtnText">Potvrdi</string>
 
 </resources>

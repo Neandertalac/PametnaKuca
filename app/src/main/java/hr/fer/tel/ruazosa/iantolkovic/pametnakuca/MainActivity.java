@@ -2,6 +2,7 @@ package hr.fer.tel.ruazosa.iantolkovic.pametnakuca;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Typeface font = Typeface.createFromAsset( getAssets(), "fontawesome-webfont.ttf" );
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
+        String IP = prefs.getString("serverIP","No IP defined");
+
+        if(IP.equals("No IP defined")){
+            Intent getIP = new Intent(MainActivity.this,SettingsActivity.class);
+            startActivityForResult(getIP,1);
+        }
+
+        setContentView(R.layout.activity_main);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
 
         Button temperatureBtn = (Button) findViewById(R.id.temperatureBtn);
         Button airCondBtn = (Button) findViewById(R.id.airCondBtn);
@@ -50,7 +59,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 launchSettingsActivity();
             }
-        });
+       });
+
     }
 
     private void launchActivity(final Class<? extends Activity> activityClass) {
