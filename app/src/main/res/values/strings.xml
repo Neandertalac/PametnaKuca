@@ -21,5 +21,10 @@
     <string name="currentTempText">Trenutna temperatura:</string>
     <string name="currentHumidityText">Trenutna vlažnost:</string>
     <string name="title_activity_air_cond_distance_enter">AirCondDistanceEnter</string>
+    <string name="airCondCurrentDistanceText">Trenutna udaljenost od klima uređaja:</string>
+    <string name="airCondSetDistanceText">Postavljena granična udaljenost od klima uređaja:</string>
+    <string name="airCondIntText">Intenzitet rada klima uređaja:</string>
+    <string name="airCondChangeDistanceText">Promijena granične udaljenosti</string>
+    <string name="enterAirCondDistanceText">Unesite novu graničnu udaljenost:</string>
 
 </resources>
