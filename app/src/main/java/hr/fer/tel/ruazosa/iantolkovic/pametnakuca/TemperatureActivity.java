@@ -38,7 +38,7 @@ public class TemperatureActivity extends Activity {
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME, MODE_PRIVATE);
         String temperature = prefs.getString("zeljenaTemperatura","No temperature defined");
 
-        if(temperature.equals("No temperature defined")){
+        if(temperature.equals("No temperature defined") | temperature.equals("")){
             Intent enterIP = new Intent(TemperatureActivity.this, TemperatureEnter.class);
             startActivityForResult(enterIP,1);
         }else{

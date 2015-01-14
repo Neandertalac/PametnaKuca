@@ -34,9 +34,9 @@ public class AirCondActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME, MODE_PRIVATE);
-        String temperature = prefs.getString("granUdaljenost","No distance defined");
+        String distance = prefs.getString("granUdaljenost","No distance defined");
 
-        if(temperature.equals("No distance defined")){
+        if(distance.equals("No distance defined") | distance.equals("") ){
             Intent enterIP = new Intent(AirCondActivity.this, AirCondDistanceEnter.class);
             startActivityForResult(enterIP,1);
         }else{
@@ -54,7 +54,7 @@ public class AirCondActivity extends Activity {
     }
 
     public void glavnaAktivnost(){
-        setContentView(R.layout.activity_temperature);
+        setContentView(R.layout.activity_air_cond);
         Button settings = (Button) findViewById(R.id.settings);
 
         settings.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +73,7 @@ public class AirCondActivity extends Activity {
                         @Override
                         public void run() {
                             try {
-                                new SpajanjeServer().execute("temp");
+                                new SpajanjeServer().execute("klima");
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 //Intent settingsIntent = new Intent(TemperatureActivity.this,TemperatureEnter.class);
@@ -104,7 +104,6 @@ public class AirCondActivity extends Activity {
 
 
     public class SpajanjeServer extends AsyncTask<String,Void,String> {
-        private static final String SERVER_URL = "http://10.0.2.2:8080/";
 
         private String jsonUdaljenost;
 
@@ -112,12 +111,11 @@ public class AirCondActivity extends Activity {
         protected String doInBackground(String... urlData) {
             try {
                 SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
-                String IP = prefs.getString("IPposluzitelja", "greska");
+                String IP = prefs.getString("serverIP", "greska");
                 if(IP.equals("greska")) Toast.makeText(getApplicationContext(),"Potrebno je definirati " +
                         "IP adresu poslužitelja",Toast.LENGTH_LONG).show();
                 URL url;
                 url = new URL("http://"+IP+":8080/" + urlData[0]);
-                //url = new URL(SERVER_URL + urlData[0]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
