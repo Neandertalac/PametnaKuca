@@ -20,5 +20,6 @@
     <string name="intConnErrorText">Niste spojeni na internet. Provjerite vašu internet vezu.</string>
     <string name="currentTempText">Trenutna temperatura:</string>
     <string name="currentHumidityText">Trenutna vlažnost:</string>
+    <string name="title_activity_air_cond_distance_enter">AirCondDistanceEnter</string>
 
 </resources>

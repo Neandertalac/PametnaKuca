@@ -78,6 +78,8 @@ public class TemperatureActivity extends Activity {
                                 new SpajanjeServer().execute("temp");
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                //Intent settingsIntent = new Intent(TemperatureActivity.this,TemperatureEnter.class);
+                                //TemperatureActivity.this.startActivity(settingsIntent);
                             }
                         }
                     });

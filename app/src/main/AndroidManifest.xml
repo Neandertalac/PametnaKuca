@@ -42,6 +42,10 @@
             android:name=".TemperatureEnter"
             android:label="@string/title_activity_temperature_enter" >
         </activity>
+        <activity
+            android:name=".AirCondDistanceEnter"
+            android:label="@string/title_activity_air_cond_distance_enter" >
+        </activity>
     </application>
 
 </manifest>
