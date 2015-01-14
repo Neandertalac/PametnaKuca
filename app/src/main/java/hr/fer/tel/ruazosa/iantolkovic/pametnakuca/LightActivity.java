@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,21 +24,11 @@ import java.util.TimerTask;
 
 public class LightActivity extends Activity {
     public static final int INTERVAL = 1000;
-    private lightPodaci podaci;
+    private LightPodaci podaci;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light);
-
-        Button returnBtn = (Button) findViewById(R.id.lightLayoutReturnBtn);
-
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         glavnaAktivnost();
     }
@@ -111,7 +100,8 @@ public class LightActivity extends Activity {
         }
 
         protected void onPostExecute(String result){
-            lightJSONParser parser = new lightJSONParser(result);
+            setContentView(R.layout.activity_light);
+            LightJSONParser parser = new LightJSONParser(result);
             parser.parseJSON();
             podaci = parser.getData();
             TextView ispis = (TextView)findViewById(R.id.lightLayoutPrintText);

@@ -15,5 +15,10 @@
     <string name="title_activity_settings">IP adresa</string>
     <string name="enterIPAdressText">Unesite IP adresu poslužitelja: </string>
     <string name="ipEnterBtnText">Potvrdi</string>
+    <string name="title_activity_temperature_enter">TemperatureEnter</string>
+    <string name="enterTemperatureText">Unesite željenu temperaturu u prostoriji:</string>
+    <string name="intConnErrorText">Niste spojeni na internet. Provjerite vašu internet vezu.</string>
+    <string name="currentTempText">Trenutna temperatura:</string>
+    <string name="currentHumidityText">Trenutna vlažnost:</string>
 
 </resources>

@@ -1,10 +1,10 @@
 package hr.fer.tel.ruazosa.iantolkovic.pametnakuca;
 
-public class lightPodaci {
+public class LightPodaci {
     private String prisustvo;
     private String osvjetljenje;
 
-    public lightPodaci(String sonar, String osvjetljenje){
+    public LightPodaci(String sonar, String osvjetljenje){
         this.prisustvo=sonar;
         this.osvjetljenje=osvjetljenje;
     }

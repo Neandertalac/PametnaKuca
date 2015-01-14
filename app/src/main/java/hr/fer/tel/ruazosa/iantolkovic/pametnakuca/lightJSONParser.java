@@ -5,11 +5,11 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class lightJSONParser {
+public class LightJSONParser {
     private String result;
-    private lightPodaci rez;
+    private LightPodaci rez;
 
-    public lightJSONParser(String result){
+    public LightJSONParser(String result){
         this.result = result;
     }
 
@@ -17,7 +17,7 @@ public class lightJSONParser {
         try {
             JSONObject jsonObject = new JSONObject(result);
 
-            this.rez = new lightPodaci(
+            this.rez = new LightPodaci(
                     jsonObject.getString("prisustvo"),
                     jsonObject.getString("osvjetljenje"));
         } catch (JSONException e){
@@ -25,7 +25,7 @@ public class lightJSONParser {
         }
     }
 
-    public lightPodaci getData(){
+    public LightPodaci getData(){
         return this.rez;
     }
 }
