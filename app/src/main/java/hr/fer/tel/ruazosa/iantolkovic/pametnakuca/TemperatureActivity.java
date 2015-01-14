@@ -109,7 +109,7 @@ public class TemperatureActivity extends Activity {
         protected String doInBackground(String... urlData) {
             try {
                 SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
-                String IP = prefs.getString("IPserver","No IP defined");
+                String IP = prefs.getString("serverIP","No IP defined");
                 URL url;
                 url = new URL("http://"+IP+":8080/" + urlData[0]);
 
