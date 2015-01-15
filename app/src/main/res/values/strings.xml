@@ -26,5 +26,7 @@
     <string name="airCondIntText">Intenzitet rada klima uređaja:</string>
     <string name="airCondChangeDistanceText">Promijena granične udaljenosti</string>
     <string name="enterAirCondDistanceText">Unesite novu graničnu udaljenost:</string>
+    <string name="title_activity_connection_error">connectionErrorActivity</string>
+    <string name="retryText">Pokušajte ponovno</string>
 
 </resources>

@@ -68,25 +68,24 @@ public class TemperatureActivity extends Activity {
         });
         if(onConnected(getCurrentFocus()) == true) {
             final Handler handler = new Handler();
-            TimerTask timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                     handler.post(new Runnable() {
+                         @Override
+                         public void run() {
+                             try {
                                 new SpajanjeServer().execute("temp");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                //Intent settingsIntent = new Intent(TemperatureActivity.this,TemperatureEnter.class);
-                                //TemperatureActivity.this.startActivity(settingsIntent);
-                            }
-                        }
-                    });
-                }
-            };
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+                         }
+                     });
+                    }
+                };
             Timer timer = new Timer();
-            timer.schedule(timerTask, 0,INTERVAL);
+            timer.schedule(timerTask, 0, INTERVAL);
+
         }
     }
 
@@ -116,7 +115,9 @@ public class TemperatureActivity extends Activity {
                 url = new URL("http://"+IP+":8080/" + urlData[0]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(200);
                 conn.setRequestMethod("GET");
+
                 if (conn.getResponseCode() != 200) {
                     throw new IOException(conn.getResponseMessage());
                 }
@@ -136,10 +137,15 @@ public class TemperatureActivity extends Activity {
         }
 
         protected void onPostExecute(String result){
-            TemperatureJSONParser parser = new TemperatureJSONParser(result);
-            parser.parseJSON();
-            podaci = parser.getData();
-            ispis();
+            if(result==null){
+
+
+            }else{
+                TemperatureJSONParser parser = new TemperatureJSONParser(result);
+                parser.parseJSON();
+                podaci = parser.getData();
+                ispis();
+            }
         }
 
     }

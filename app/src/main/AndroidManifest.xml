@@ -46,6 +46,10 @@
             android:name=".AirCondDistanceEnter"
             android:label="@string/title_activity_air_cond_distance_enter" >
         </activity>
+        <activity
+            android:name=".ConnectionErrorActivity"
+            android:label="@string/title_activity_connection_error" >
+        </activity>
     </application>
 
 </manifest>
