@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +35,15 @@ public class LightActivity extends Activity {
     }
 
     public void glavnaAktivnost(){
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_light);
+        Button retBtn = (Button) findViewById(R.id.lightRtrnButton);
+
+        retBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         if(onConnected(getCurrentFocus()) == true) {
             final Handler handler = new Handler();
@@ -101,23 +110,30 @@ public class LightActivity extends Activity {
 
         protected void onPostExecute(String result){
             setContentView(R.layout.activity_light);
-            LightJSONParser parser = new LightJSONParser(result);
-            parser.parseJSON();
-            podaci = parser.getData();
-            TextView ispis = (TextView)findViewById(R.id.lightLayoutPrintText);
+            TextView ispis = (TextView) findViewById(R.id.lightLayoutPrintText);
             ImageView pic = (ImageView) findViewById(R.id.picture);
-            if(podaci.getPrisustvo() == 0){
-                pic.setImageResource(R.drawable.zaruljaoff);
-                ispis.setText("Nema prisutnih osoba u prostoriji, nije potrebno paliti svjetlo.");
-            }else{
-                if(Double.parseDouble(podaci.getOsvjetljenje())<250){
-                    pic.setImageResource(R.drawable.zaruljaon);
-                    ispis.setText("U prostoriji se netko nalazi i ostvjetljenje nije zadovoljavajuće.");
-                }else{
+
+            if(result!=null) {
+                LightJSONParser parser = new LightJSONParser(result);
+                parser.parseJSON();
+                podaci = parser.getData();
+                if (podaci.getPrisustvo() == 0) {
                     pic.setImageResource(R.drawable.zaruljaoff);
-                    ispis.setText("U prostoriji se netko nalazi, ali je osvjetljenje zadovoljavajuće.");
+                    ispis.setText("Nema prisutnih osoba u prostoriji, nije potrebno paliti svjetlo.");
+                } else {
+                    if (Double.parseDouble(podaci.getOsvjetljenje()) < 250) {
+                        pic.setImageResource(R.drawable.zaruljaon);
+                        ispis.setText("U prostoriji se netko nalazi i ostvjetljenje nije zadovoljavajuće.");
+                    } else {
+                        pic.setImageResource(R.drawable.zaruljaoff);
+                        ispis.setText("U prostoriji se netko nalazi, ali je osvjetljenje zadovoljavajuće.");
+                    }
                 }
+            }else{
+                pic.setImageResource(R.drawable.upitnik);
+                ispis.setText("Podaci o osvjetljenju i prisutnosti nisu dostupni");
             }
+
         }
     }
 

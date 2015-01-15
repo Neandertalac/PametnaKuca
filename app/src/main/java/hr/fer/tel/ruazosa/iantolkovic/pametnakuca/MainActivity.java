@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
             try{
                 URL myUrl = new URL("http://"+IP+":8080/klima");
                 HttpURLConnection connection = (HttpURLConnection) myUrl.openConnection();
-                connection.setConnectTimeout(100);
+                connection.setConnectTimeout(50);
                 if(connection.getResponseCode()!=200)throw new IOException(connection.getResponseMessage());
                 return true;
             } catch (IOException e) {

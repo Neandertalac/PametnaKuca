@@ -138,10 +138,14 @@ public class AirCondActivity extends Activity {
 
 
         protected void onPostExecute(String result){
-            AirCondJSONParser parser = new AirCondJSONParser(result);
-            parser.parseJSON();
-            podaci = parser.getData();
-            ispis();
+            if(result==null){
+                ispisError();
+            }else {
+                AirCondJSONParser parser = new AirCondJSONParser(result);
+                parser.parseJSON();
+                podaci = parser.getData();
+                ispis();
+            }
         }
 
     }
@@ -170,6 +174,21 @@ public class AirCondActivity extends Activity {
         else stanje.setText("Hlađenje/grijanje radi standardnim intenzitetom.");
 
     }
+
+    private void ispisError(){
+        TextView editText2 = (TextView) AirCondActivity.this.findViewById(R.id.ispisUdalj);
+        editText2.setText("N/A", TextView.BufferType.NORMAL);
+
+        TextView stanje = (TextView) AirCondActivity.this.findViewById(R.id.Stanje);
+        TextView ispisUdalj = (TextView) AirCondActivity.this.findViewById(R.id.ispisZeljUdalj);
+
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
+        String udaljenostMemorija = prefs.getString("granUdaljenost","undefined");
+        ispisUdalj.setText("Nedefinirano.");
+        stanje.setText("Podaci o udaljenosti nisu dostupni.");
+
+    }
+
 
 
 }

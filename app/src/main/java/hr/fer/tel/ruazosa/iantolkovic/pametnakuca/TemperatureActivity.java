@@ -58,7 +58,14 @@ public class TemperatureActivity extends Activity {
     public void glavnaAktivnost(){
         setContentView(R.layout.activity_temperature);
         Button settings = (Button) findViewById(R.id.settings);
+        Button returnBtn = (Button) findViewById(R.id.returnBtn);
 
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +73,7 @@ public class TemperatureActivity extends Activity {
                 TemperatureActivity.this.startActivity(settingsIntent);
             }
         });
+
         if(onConnected(getCurrentFocus()) == true) {
             final Handler handler = new Handler();
                 TimerTask timerTask = new TimerTask() {
@@ -138,8 +146,7 @@ public class TemperatureActivity extends Activity {
 
         protected void onPostExecute(String result){
             if(result==null){
-
-
+                ispisError();
             }else{
                 TemperatureJSONParser parser = new TemperatureJSONParser(result);
                 parser.parseJSON();
@@ -194,6 +201,23 @@ public class TemperatureActivity extends Activity {
             aktivnoti.setText("Nije potrebna nikakva aktivnost");
             aktivnoti.setTextColor(Color.parseColor("#808080"));
         }
+    }
+
+    private void ispisError(){
+        TextView editText2 = (TextView) TemperatureActivity.this.findViewById(R.id.ispisTemp);
+        editText2.setText("N/A", TextView.BufferType.NORMAL);
+        TextView editText3 = (TextView) TemperatureActivity.this.findViewById(R.id.ispisVlaz);
+        editText3.setText("N/A", TextView.BufferType.NORMAL);
+        TextView vrataIspis = (TextView) TemperatureActivity.this.findViewById(R.id.vrata1);
+        vrataIspis.setText("Nisu dostupni podaci o stanju vratiju.");
+        TextView prozorIspis = (TextView) TemperatureActivity.this.findViewById(R.id.prozor1);
+        prozorIspis.setText("Nisu dostupni podaci o stanju prozora.");
+        TextView aktivnoti = (TextView) TemperatureActivity.this.findViewById(R.id.Aktivnosti);
+        TextView ispisTemp = (TextView) TemperatureActivity.this.findViewById(R.id.ispisZeljTemp);
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
+        String temperature = prefs.getString("zeljenaTemperatura","No temperature defined");
+        ispisTemp.setText("Željena temperatura: "+temperature);
+        aktivnoti.setText("Nisu dostupni podaci o stanju u prostoriji.");
 
     }
 
