@@ -9,7 +9,8 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:id="@+id/root">
 
     <Button
         android:layout_width="match_parent"
