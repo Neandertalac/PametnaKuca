@@ -8,25 +8,26 @@
     <string name="airCondBtnText">Klima</string>
     <string name="settingsBtnText">Opcije</string>
     <string name="fa_gear"></string>
-    <string name="title_activity_temperature">TemperatureActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_light">LightActivity</string>
-    <string name="title_activity_air_cond">AirCondActivity</string>
+    <string name="title_activity_temperature">Temperatura</string>
+    <string name="title_activity_light">Svjetlo</string>
+    <string name="title_activity_air_cond">Klima</string>
     <string name="title_activity_settings">IP adresa</string>
     <string name="enterIPAdressText">Unesite IP adresu poslužitelja: </string>
     <string name="ipEnterBtnText">Potvrdi</string>
-    <string name="title_activity_temperature_enter">TemperatureEnter</string>
+    <string name="title_activity_temperature_enter">UnosTemperature</string>
     <string name="enterTemperatureText">Unesite željenu temperaturu u prostoriji:</string>
     <string name="intConnErrorText">Niste spojeni na internet. Provjerite vašu internet vezu.</string>
     <string name="currentTempText">Trenutna temperatura:</string>
     <string name="currentHumidityText">Trenutna vlažnost:</string>
-    <string name="title_activity_air_cond_distance_enter">AirCondDistanceEnter</string>
+    <string name="title_activity_air_cond_distance_enter">UnosUdaljenosti</string>
     <string name="airCondCurrentDistanceText">Trenutna udaljenost od klima uređaja:</string>
     <string name="airCondSetDistanceText">Postavljena granična udaljenost od klima uređaja:</string>
     <string name="airCondIntText">Intenzitet rada klima uređaja:</string>
-    <string name="airCondChangeDistanceText">Promijena granične udaljenosti</string>
+    <string name="airCondChangeDistanceText">Promijena udaljenosti</string>
     <string name="enterAirCondDistanceText">Unesite novu graničnu udaljenost:</string>
-    <string name="title_activity_connection_error">connectionErrorActivity</string>
+    <string name="title_activity_connection_error">NedostupanPoslužitelj</string>
     <string name="retryText">Pokušajte ponovno</string>
+    <string name="returnToMainActivityBtnText">Izbornik</string>
+    <string name="changeTempBtnText">Promjena temperature</string>
 
 </resources>

@@ -30,20 +30,20 @@ public class LightActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        glavnaAktivnost();
-    }
-
-    public void glavnaAktivnost(){
         setContentView(R.layout.activity_light);
-        Button retBtn = (Button) findViewById(R.id.lightRtrnButton);
 
+        Button retBtn = (Button) findViewById(R.id.lightReturnButton);
         retBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        glavnaAktivnost();
+    }
+
+    public void glavnaAktivnost(){
 
         if(onConnected(getCurrentFocus()) == true) {
             final Handler handler = new Handler();
@@ -90,6 +90,7 @@ public class LightActivity extends Activity {
                 url = new URL("http://"+IP+":8080/" + urlData[0]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(200);
                 conn.setRequestMethod("GET");
                 if (conn.getResponseCode() != 200) {
                     throw new IOException(conn.getResponseMessage());
@@ -109,7 +110,6 @@ public class LightActivity extends Activity {
         }
 
         protected void onPostExecute(String result){
-            setContentView(R.layout.activity_light);
             TextView ispis = (TextView) findViewById(R.id.lightLayoutPrintText);
             ImageView pic = (ImageView) findViewById(R.id.picture);
 
@@ -123,7 +123,7 @@ public class LightActivity extends Activity {
                 } else {
                     if (Double.parseDouble(podaci.getOsvjetljenje()) < 250) {
                         pic.setImageResource(R.drawable.zaruljaon);
-                        ispis.setText("U prostoriji se netko nalazi i ostvjetljenje nije zadovoljavajuće.");
+                        ispis.setText("U prostoriji se netko nalazi i osvjetljenje nije zadovoljavajuće.");
                     } else {
                         pic.setImageResource(R.drawable.zaruljaoff);
                         ispis.setText("U prostoriji se netko nalazi, ali je osvjetljenje zadovoljavajuće.");

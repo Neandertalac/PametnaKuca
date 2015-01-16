@@ -27,9 +27,9 @@ public class MainActivity extends Activity {
         if(IP.equals("No IP defined")){
             Intent getIP = new Intent(MainActivity.this,SettingsActivity.class);
             startActivityForResult(getIP,1);
+        }else {
+            new SpajanjeProba().execute();
         }
-
-        new SpajanjeProba().execute();
 
         setContentView(R.layout.activity_main);
         Typeface font = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
@@ -100,34 +100,35 @@ public class MainActivity extends Activity {
 
     public class SpajanjeProba extends AsyncTask<String,Void,Boolean> {
 
-        @Override
-        protected Boolean doInBackground(String... urlData) {
-            return isConnectedToServer();
+    @Override
+    protected Boolean doInBackground(String... urlData) {
+        return isConnectedToServer();
 
-        }
+    }
 
-        @Override
-        protected void onPostExecute(Boolean result){
-            if(!result){
-                Log.d("PROJEKT",String.valueOf(result));
-                Intent getIP = new Intent(MainActivity.this,ConnectionErrorActivity.class);
-                startActivity(getIP);
-            }
-        }
-
-        public boolean isConnectedToServer() {
-            SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
-            String IP = prefs.getString("serverIP","No IP defined");
-            try{
-                URL myUrl = new URL("http://"+IP+":8080/klima");
-                HttpURLConnection connection = (HttpURLConnection) myUrl.openConnection();
-                connection.setConnectTimeout(50);
-                if(connection.getResponseCode()!=200)throw new IOException(connection.getResponseMessage());
-                return true;
-            } catch (IOException e) {
-                return false;
-            }
+    @Override
+    protected void onPostExecute(Boolean result){
+        if(!result){
+            Log.d("PROJEKT",String.valueOf(result));
+            Intent getIP = new Intent(MainActivity.this,ConnectionErrorActivity.class);
+            startActivity(getIP);
         }
     }
+
+    public boolean isConnectedToServer() {
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
+        String IP = prefs.getString("serverIP","No IP defined");
+        try{
+            URL myUrl = new URL("http://"+IP+":8080/klima");
+            HttpURLConnection connection = (HttpURLConnection) myUrl.openConnection();
+            connection.setConnectTimeout(50);
+            if(connection.getResponseCode()!=200)throw new IOException(connection.getResponseMessage());
+            connection.disconnect();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+}
 
 }

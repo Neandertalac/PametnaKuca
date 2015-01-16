@@ -10,6 +10,8 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -182,7 +184,7 @@ public class TemperatureActivity extends Activity {
         //Dohvacanje podataka o temperaturi iz memorije
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
         String temperature = prefs.getString("zeljenaTemperatura","No temperature defined");
-        ispisTemp.setText("Željena temperatura: "+temperature);
+        ispisTemp.setText("Željena temperatura: "+temperature+"\u2103");
         //zeljTemp - temperatura pohranjena u memoriji
         Float zeljTemp = Float.parseFloat(temperature);
 
@@ -216,8 +218,9 @@ public class TemperatureActivity extends Activity {
         TextView ispisTemp = (TextView) TemperatureActivity.this.findViewById(R.id.ispisZeljTemp);
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
         String temperature = prefs.getString("zeljenaTemperatura","No temperature defined");
-        ispisTemp.setText("Željena temperatura: "+temperature);
-        aktivnoti.setText("Nisu dostupni podaci o stanju u prostoriji.");
+        Spanned title = Html.fromHtml("<b> Željena temperatura: </b>");
+        ispisTemp.setText(title+temperature+"\u2103");
+        aktivnoti.setText("Podaci o stanju u prostoriji nisu dostupni.");
 
     }
 

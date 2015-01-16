@@ -27,7 +27,7 @@ import java.util.TimerTask;
 
 public class AirCondActivity extends Activity {
     private AirCondPodaci podaci;
-    protected final int INTERVAL = 5000;
+    protected final int INTERVAL = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ public class AirCondActivity extends Activity {
         String distance = prefs.getString("granUdaljenost","No distance defined");
 
         if(distance.equals("No distance defined") | distance.equals("") ){
-            Intent enterIP = new Intent(AirCondActivity.this, AirCondDistanceEnter.class);
-            startActivityForResult(enterIP,1);
+            Intent enterDistance = new Intent(AirCondActivity.this, AirCondDistanceEnter.class);
+            startActivityForResult(enterDistance,1);
         }else{
             glavnaAktivnost();
         }
@@ -56,6 +56,14 @@ public class AirCondActivity extends Activity {
     public void glavnaAktivnost(){
         setContentView(R.layout.activity_air_cond);
         Button settings = (Button) findViewById(R.id.settings);
+        Button returnBtn = (Button) findViewById(R.id.airCondeReturnBtn);
+
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +84,6 @@ public class AirCondActivity extends Activity {
                                 new SpajanjeServer().execute("klima");
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                //Intent settingsIntent = new Intent(TemperatureActivity.this,TemperatureEnter.class);
-                                //TemperatureActivity.this.startActivity(settingsIntent);
                             }
                         }
                     });
@@ -112,13 +118,12 @@ public class AirCondActivity extends Activity {
             try {
                 SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
                 String IP = prefs.getString("serverIP", "greska");
-                if(IP.equals("greska")) Toast.makeText(getApplicationContext(),"Potrebno je definirati " +
-                        "IP adresu poslužitelja",Toast.LENGTH_LONG).show();
                 URL url;
                 url = new URL("http://"+IP+":8080/" + urlData[0]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
+                conn.setConnectTimeout(200);
                 if (conn.getResponseCode() != 200) {
                     throw new IOException(conn.getResponseMessage());
                 }
@@ -184,7 +189,7 @@ public class AirCondActivity extends Activity {
 
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
         String udaljenostMemorija = prefs.getString("granUdaljenost","undefined");
-        ispisUdalj.setText("Nedefinirano.");
+        ispisUdalj.setText("Nedefinirano");
         stanje.setText("Podaci o udaljenosti nisu dostupni.");
 
     }

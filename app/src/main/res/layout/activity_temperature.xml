@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/currentTempText"
         android:gravity="center_horizontal"
+        android:textStyle="bold"
         android:textSize="@dimen/activity_vertical_margin"/>
 
 
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/currentHumidityText"
         android:gravity="center_horizontal"
+        android:textStyle="bold"
         android:textSize="@dimen/activity_vertical_margin"/>
 
 
@@ -72,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Potrebne aktivnosti:"
+        android:textStyle="bold"
         android:gravity="center_horizontal"
         android:textSize="@dimen/activity_vertical_margin"/>
 
@@ -92,15 +95,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/settings"
-        android:text="Promjena temperature"
-        android:layout_weight="1"/>
+        android:text="@string/changeTempBtnText"
+        android:layout_weight="1"
+        android:textSize="@dimen/activity_vertical_margin"/>
 
      <Button
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="Izbornik"
+         android:text="@string/returnToMainActivityBtnText"
          android:id="@+id/returnBtn"
-         android:layout_weight="1"/>
+         android:layout_weight="1"
+         android:textSize="@dimen/activity_vertical_margin"/>
     </LinearLayout>
 
 </LinearLayout>

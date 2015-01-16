@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="@string/airCondIntText"
         android:gravity="center_horizontal"
+        android:textStyle="bold"
         android:id="@+id/stanjeText"/>
 
     <TextView
@@ -63,12 +64,26 @@
         android:gravity="center_horizontal"/>
 
 
-
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/settings"
-        android:text="@string/airCondChangeDistanceText"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings"
+            android:text="@string/airCondChangeDistanceText"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/returnToMainActivityBtnText"
+            android:id="@+id/airCondeReturnBtn"/>
+    </LinearLayout>
 
 </LinearLayout>
