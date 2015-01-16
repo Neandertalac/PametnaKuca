@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
+
 
 public class ConnectionErrorActivity extends Activity {
     public static final String PREFS_NAME="MyPrefsFile";
@@ -25,6 +27,8 @@ public class ConnectionErrorActivity extends Activity {
         final Button enterIpBtn = (Button) findViewById(R.id.enterIpBtn);
         final EditText ipAddress = (EditText) findViewById(R.id.ipAdress);
         final Button retryBtn = (Button) findViewById(R.id.retryBtn);
+
+        ipAddress.setInputType(TYPE_TEXT_VARIATION_NORMAL);
 
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override

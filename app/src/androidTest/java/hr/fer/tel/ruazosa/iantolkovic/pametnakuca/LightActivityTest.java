@@ -47,4 +47,16 @@ public class LightActivityTest extends ActivityInstrumentationTestCase2<LightAct
         assertGroupContains(root, message);
         assertGroupContains(root, returnBtn);
     }
+
+    @MediumTest
+    public void testPicture(){
+        assertThat(picture).isShown();
+    }
+
+    @MediumTest
+    public void testReturnBtn(){
+        assertThat(returnBtn)
+                .isVisible()
+                .hasText(R.string.returnToMainActivityBtnText);
+    }
 }

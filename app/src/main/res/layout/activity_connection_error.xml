@@ -15,14 +15,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Došlo je do pogreške u spajanju na poslužitelj. Unesite novu IP adresu poslužitelja ili pokušajte ponovno."
+        android:text="@string/errorMsgText"
         android:id="@+id/errorMsg"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:id="@+id/ipAdress"/>
+        android:id="@+id/ipAdress"
+        android:maxLines="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"

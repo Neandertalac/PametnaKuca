@@ -71,4 +71,41 @@ public class AirCondActivityTest  extends ActivityInstrumentationTestCase2<AirCo
         assertGroupContains(root1, changeDistanceBtn);
         assertGroupContains(root1, returnBtn);
     }
+
+    @MediumTest
+    public void testCurrDistanceText(){
+        assertThat(currDistanceText)
+                .isVisible()
+                .hasText(R.string.airCondCurrentDistanceText);
+    }
+
+    @MediumTest
+    public void testLimitDistanceText(){
+        assertThat(limitDistanceText)
+                .isVisible()
+                .hasText(R.string.airCondSetDistanceText);
+    }
+
+    @MediumTest
+    public void testIntensityText(){
+        assertThat(airCondIntensityText)
+                .isVisible()
+                .hasText(R.string.airCondIntText);
+    }
+
+    @MediumTest
+    public void testChangeDistanceBtn(){
+        assertThat(changeDistanceBtn)
+                .isVisible()
+                .hasText(R.string.airCondChangeDistanceText);
+    }
+
+    @MediumTest
+    public void testReturnBtn(){
+        assertThat(returnBtn)
+                .isVisible()
+                .hasText(R.string.returnToMainActivityBtnText);
+    }
+
+
 }

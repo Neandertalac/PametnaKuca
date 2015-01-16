@@ -14,7 +14,7 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
 
     private TemperatureActivity activity;
 
-    private TextView currTemptext;
+    private TextView currTempText;
     private TextView currTemp;
     private TextView currHumidityText;
     private TextView currHumidity;
@@ -37,7 +37,7 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
 
         activity = getActivity();
 
-        currTemptext = (TextView) activity.findViewById(R.id.currTempText);
+        currTempText = (TextView) activity.findViewById(R.id.currTempText);
         currTemp = (TextView) activity.findViewById(R.id.ispisTemp);
         currHumidityText = (TextView) activity.findViewById(R.id.currHumText);
         currHumidity = (TextView) activity.findViewById(R.id.ispisVlaz);
@@ -57,7 +57,7 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
                 .isVisible()
                 .isVertical()
                 .hasChildCount(11);
-        assertGroupContains(root, currTemptext);
+        assertGroupContains(root, currTempText);
         assertGroupContains(root, currTemp);
         assertGroupContains(root, currHumidityText);
         assertGroupContains(root, currHumidity);
@@ -77,4 +77,40 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
         assertGroupContains(root1, changeTempBtn);
         assertGroupContains(root1, returnBtn);
     }
+
+    @MediumTest
+    public void testCurrTempText(){
+        assertThat(currTempText)
+                .isVisible()
+                .hasText(R.string.currentTempText);
+    }
+
+    @MediumTest
+    public void testCurrHumidityText(){
+        assertThat(currHumidityText)
+                .isVisible()
+                .hasText(R.string.currentHumidityText);
+    }
+
+    @MediumTest
+    public void testActionsText(){
+        assertThat(actionsText)
+                .isVisible()
+                .hasText(R.string.actionsText);
+    }
+
+    @MediumTest
+    public void testChangeTempBtn(){
+        assertThat(changeTempBtn)
+                .isVisible()
+                .hasText(R.string.changeTempBtnText);
+    }
+
+    @MediumTest
+    public void testReturnBtn(){
+        assertThat(returnBtn)
+                .isVisible()
+                .hasText(R.string.returnToMainActivityBtnText);
+    }
+
 }

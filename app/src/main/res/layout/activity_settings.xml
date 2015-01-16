@@ -9,18 +9,21 @@
     android:orientation="vertical"
     tools:context="hr.fer.tel.ruazosa.iantolkovic.pametnakuca.SettingsActivity"
     android:layout_gravity="center_vertical"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:id="@+id/root">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enterIPAdressText"/>
+        android:text="@string/enterIPAdressText"
+        android:id="@+id/enterIPText"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:id="@+id/ipAdress"/>
+        android:id="@+id/ipAdress"
+        android:maxLines="1"/>
 
     <Button
         android:layout_width="match_parent"

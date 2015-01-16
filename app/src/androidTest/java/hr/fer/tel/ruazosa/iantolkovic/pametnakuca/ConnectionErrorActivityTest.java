@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import static android.test.ViewAsserts.assertGroupContains;
+import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
 import static org.assertj.android.api.Assertions.assertThat;
 
 public class ConnectionErrorActivityTest extends ActivityInstrumentationTestCase2<ConnectionErrorActivity>{
@@ -57,5 +58,34 @@ public class ConnectionErrorActivityTest extends ActivityInstrumentationTestCase
                 .hasChildCount(2);
         assertGroupContains(root, submit);
         assertGroupContains(root, retry);
+    }
+
+    @MediumTest
+    public void testErrorMsg(){
+        assertThat(errorMsg)
+                .isVisible()
+                .hasText(R.string.errorMsgText);
+    }
+
+    @MediumTest
+    public void testEnterIP(){
+        assertThat(enterIP)
+                .isVisible()
+                .hasInputType(TYPE_TEXT_VARIATION_NORMAL)
+                .hasMaxLines(1);
+    }
+
+    @MediumTest
+    public void testSubmit(){
+        assertThat(submit)
+                .isVisible()
+                .hasText(R.string.ipEnterBtnText);
+    }
+
+    @MediumTest
+    public void testRetry(){
+        assertThat(retry)
+                .isVisible()
+                .hasText(R.string.retryText);
     }
 }

@@ -12,17 +12,17 @@ import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
 import static org.assertj.android.api.Assertions.assertThat;
 
-public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<TemperatureEnter>{
+public class AirCondDistanceEnterTest extends ActivityInstrumentationTestCase2<AirCondDistanceEnter>{
 
-    private TemperatureEnter activity;
+    private AirCondDistanceEnter activity;
 
     private LinearLayout root;
-    private TextView enterTempText;
-    private EditText enterTemp;
+    private TextView enterDistanceText;
+    private EditText enterDistance;
     private Button returnBtn;
 
-    public TemperatureEnterTest(){
-        super(TemperatureEnter.class);
+    public AirCondDistanceEnterTest(){
+        super(AirCondDistanceEnter.class);
     }
 
     @Override
@@ -31,9 +31,9 @@ public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<Tempe
 
         activity = getActivity();
 
-        enterTempText = (TextView) activity.findViewById(R.id.enterTempText);
-        enterTemp = (EditText) activity.findViewById(R.id.temperatureEnter);
-        returnBtn = (Button) activity.findViewById(R.id.temperatureBtn);
+        enterDistanceText = (TextView) activity.findViewById(R.id.enterDistanceText);
+        enterDistance = (EditText) activity.findViewById(R.id.distanceEnter);
+        returnBtn = (Button) activity.findViewById(R.id.distanceBtn);
         root = (LinearLayout) activity.findViewById(R.id.root);
     }
 
@@ -44,21 +44,21 @@ public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<Tempe
                 .isVertical()
                 .hasChildCount(3);
 
-        assertGroupContains(root, enterTempText);
-        assertGroupContains(root, enterTemp);
+        assertGroupContains(root, enterDistanceText);
+        assertGroupContains(root, enterDistance);
         assertGroupContains(root, returnBtn);
     }
 
     @MediumTest
-    public void testEnterTempText(){
-        assertThat(enterTempText)
+    public void testEnterDistanceText(){
+        assertThat(enterDistanceText)
                 .isVisible()
-                .hasText(R.string.enterTemperatureText);
+                .hasText(R.string.enterAirCondDistanceText);
     }
 
     @MediumTest
-    public void testTemperatureEnter(){
-        assertThat(enterTemp)
+    public void testEnterDistance(){
+        assertThat(enterDistance)
                 .isVisible()
                 .hasMaxLines(1)
                 .hasInputType(TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL);
@@ -68,6 +68,7 @@ public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<Tempe
     public void testReturnBtn(){
         assertThat(returnBtn)
                 .isVisible()
-                .hasText(R.string.returnToMainActivityBtnText);
+                .hasText(R.string.ipEnterBtnText);
     }
+
 }

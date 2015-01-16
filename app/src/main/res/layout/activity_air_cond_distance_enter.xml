@@ -21,8 +21,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:id="@+id/distanceEnter"/>
+        android:inputType="numberDecimal"
+        android:id="@+id/distanceEnter"
+        android:maxLines="1"/>
 
     <Button
         android:layout_width="match_parent"

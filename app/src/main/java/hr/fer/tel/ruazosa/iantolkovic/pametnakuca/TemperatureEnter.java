@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static android.text.InputType.TYPE_CLASS_NUMBER;
+import static android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
+
 
 public class TemperatureEnter extends Activity {
 
@@ -19,6 +22,8 @@ public class TemperatureEnter extends Activity {
 
         final Button temperatureBtn = (Button) findViewById(R.id.temperatureBtn);
         final EditText temperatureEnter = (EditText) findViewById(R.id.temperatureEnter);
+
+        temperatureEnter.setInputType(TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL);
 
         temperatureBtn.setOnClickListener(new View.OnClickListener() {
             @Override

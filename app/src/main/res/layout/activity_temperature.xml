@@ -76,7 +76,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Potrebne aktivnosti:"
+        android:text="@string/actionsText"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:textSize="@dimen/activity_vertical_margin"

@@ -29,5 +29,7 @@
     <string name="retryText">Pokušajte ponovno</string>
     <string name="returnToMainActivityBtnText">Izbornik</string>
     <string name="changeTempBtnText">Promjena temperature</string>
+    <string name="errorMsgText">Došlo je do pogreške u spajanju na poslužitelj. Unesite novu IP adresu poslužitelja ili pokušajte ponovno.</string>
+    <string name="actionsText">Potrebne aktivnosti:</string>
 
 </resources>
