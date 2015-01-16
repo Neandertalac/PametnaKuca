@@ -9,12 +9,14 @@
     android:orientation="vertical"
     tools:context="hr.fer.tel.ruazosa.iantolkovic.pametnakuca.SettingsActivity"
     android:layout_gravity="center_vertical"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:id="@+id/root">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enterAirCondDistanceText"/>
+        android:text="@string/enterAirCondDistanceText"
+        android:id="@+id/enterDistanceText"/>
 
     <EditText
         android:layout_width="match_parent"

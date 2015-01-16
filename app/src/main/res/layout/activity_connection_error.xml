@@ -9,12 +9,14 @@
     android:orientation="vertical"
     tools:context="hr.fer.tel.ruazosa.iantolkovic.pametnakuca.SettingsActivity"
     android:layout_gravity="center_vertical"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:id="@+id/root">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Došlo je do pogreške u spajanju na poslužitelj. Unesite novu IP adresu poslužitelja ili pokušajte ponovno."/>
+        android:text="Došlo je do pogreške u spajanju na poslužitelj. Unesite novu IP adresu poslužitelja ili pokušajte ponovno."
+        android:id="@+id/errorMsg"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -24,7 +26,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/root1">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,8 +40,6 @@
             android:layout_weight="1"
             android:text="@string/retryText"
             android:id="@+id/retryBtn"/>
-
-
 
     </LinearLayout>
 

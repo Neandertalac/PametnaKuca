@@ -73,7 +73,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
-        new SpajanjeProba().execute();
+        SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
+        String IP = prefs.getString("serverIP","No IP defined");
+
+        if(!IP.equals("No IP defined")){
+            new SpajanjeProba().execute();
+        }
     }
 
     private void launchActivity(final Class<? extends Activity> activityClass) {

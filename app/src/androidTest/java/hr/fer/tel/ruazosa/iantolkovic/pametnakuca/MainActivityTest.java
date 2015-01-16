@@ -7,7 +7,6 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import static android.test.TouchUtils.clickView;
 import static android.test.ViewAsserts.assertGroupContains;
@@ -42,50 +41,50 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
                 .hasChildCount(4)
                 .isVertical()
                 .isVisible();
-        assertGroupContains(root, launchTemperatureActivity);
-        assertGroupContains(root, launchLightActivity);
-        assertGroupContains(root, launchAirCondActivity);
-        assertGroupContains(root, launchSettingsActivity);
+        assertGroupContains(root, tempBtn);
+        assertGroupContains(root, lightBtn);
+        assertGroupContains(root, airCondBtn);
+        assertGroupContains(root, enterIPBtn);
     }
 
     @MediumTest
     public void testLaunchTemperatureActivityLayout(){
-        assertThat(launchTemperatureActivity).isShown();
+        assertThat(tempBtn).isShown();
     }
 
     @MediumTest
     public void testLaunchLightActivityLayout(){
-        assertThat(launchLightActivity).isShown();
+        assertThat(lightBtn).isShown();
     }
 
     @MediumTest
     public void testLaunchAirCondActivityLayout(){
-        assertThat(launchAirCondActivity).isShown();
+        assertThat(airCondBtn).isShown();
     }
 
     @MediumTest
     public void testLaunchSettingsActivityLayout(){
-        assertThat(launchSettingsActivity).isShown();
+        assertThat(enterIPBtn).isShown();
     }
 
     @MediumTest
     public void testLaunchTemperatureActivity(){
-        testLaunchActivity(launchTemperatureActivity, TemperatureActivity.class);
+        testLaunchActivity(tempBtn, TemperatureActivity.class);
     }
 
     @MediumTest
     public void testLaunchLightActivity(){
-        testLaunchActivity(launchLightActivity, LightActivity.class);
+        testLaunchActivity(lightBtn, LightActivity.class);
     }
 
     @MediumTest
     public void testLaunchAirCondActivity(){
-        testLaunchActivity(launchAirCondActivity, AirCondActivity.class);
+        testLaunchActivity(airCondBtn, AirCondActivity.class);
     }
 
     @MediumTest
     public void testLaunchSettingsActivity(){
-        testLaunchActivity(launchSettingsActivity, SettingsActivity.class);
+        testLaunchActivity(enterIPBtn, SettingsActivity.class);
     }
 
     private void testLaunchActivity(final View button, Class<? extends Activity> activityClass) {
