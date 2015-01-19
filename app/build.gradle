@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    buildToolsVersion '21.1.0'
 
     defaultConfig {
         applicationId "hr.fer.tel.ruazosa.iantolkovic.pametnakuca"
@@ -10,7 +10,6 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-        testApplicationId "hr.fer.tel.ruazosa.iantolkovic.pametnakuca"
     }
     buildTypes {
         release {
@@ -21,6 +20,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
 }

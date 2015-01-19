@@ -56,8 +56,8 @@ public class ConnectionErrorActivityTest extends ActivityInstrumentationTestCase
                 .isVisible()
                 .isHorizontal()
                 .hasChildCount(2);
-        assertGroupContains(root, submit);
-        assertGroupContains(root, retry);
+        assertGroupContains(root1, submit);
+        assertGroupContains(root1, retry);
     }
 
     @MediumTest

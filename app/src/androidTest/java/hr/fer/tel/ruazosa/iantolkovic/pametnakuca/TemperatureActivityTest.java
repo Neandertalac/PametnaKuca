@@ -56,7 +56,7 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
         assertThat(root)
                 .isVisible()
                 .isVertical()
-                .hasChildCount(11);
+                .hasChildCount(10);
         assertGroupContains(root, currTempText);
         assertGroupContains(root, currTemp);
         assertGroupContains(root, currHumidityText);

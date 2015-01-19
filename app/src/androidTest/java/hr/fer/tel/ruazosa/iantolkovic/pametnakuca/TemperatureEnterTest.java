@@ -21,7 +21,7 @@ public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<Tempe
     private EditText enterTemp;
     private Button returnBtn;
 
-    public TemperatureEnterTest(){
+    public TemperatureEnterTest() {
         super(TemperatureEnter.class);
     }
 
@@ -68,6 +68,6 @@ public class TemperatureEnterTest extends ActivityInstrumentationTestCase2<Tempe
     public void testReturnBtn(){
         assertThat(returnBtn)
                 .isVisible()
-                .hasText(R.string.returnToMainActivityBtnText);
+                .hasText(R.string.ipEnterBtnText);
     }
 }
