@@ -1,6 +1,5 @@
 package hr.fer.tel.ruazosa.iantolkovic.pametnakuca;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.test.ActivityInstrumentationTestCase2;
@@ -15,7 +14,8 @@ import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
 import static org.assertj.android.api.Assertions.assertThat;
 
-public class AirCondDistanceEnterTest extends ActivityInstrumentationTestCase2<AirCondDistanceEnter>{
+
+public class AirCondEnterDistanceTest extends ActivityInstrumentationTestCase2<AirCondDistanceEnter>{
     private AirCondDistanceEnter activity;
 
     private LinearLayout root;
@@ -23,7 +23,7 @@ public class AirCondDistanceEnterTest extends ActivityInstrumentationTestCase2<A
     private EditText enterDistance;
     private Button returnBtn;
 
-    public AirCondDistanceEnterTest(){
+    public AirCondEnterDistanceTest(){
         super(AirCondDistanceEnter.class);
     }
 
