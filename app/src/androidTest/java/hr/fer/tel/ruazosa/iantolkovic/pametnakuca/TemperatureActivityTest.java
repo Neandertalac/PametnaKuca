@@ -1,6 +1,9 @@
 package hr.fer.tel.ruazosa.iantolkovic.pametnakuca;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -8,6 +11,8 @@ import android.widget.TextView;
 
 import static android.test.ViewAsserts.assertGroupContains;
 import static org.assertj.android.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<TemperatureActivity>{
@@ -34,8 +39,14 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
     @Override
     protected void setUp() throws Exception{
         super.setUp();
-
         activity = getActivity();
+        System.setProperty("dexmaker.dexcache", getInstrumentation().getTargetContext().getCacheDir().getPath());
+
+        SharedPreferences.Editor editor = getInstrumentation().getTargetContext().getSharedPreferences(SettingsActivity.PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString("serverIP","10.0.2.2");
+        editor.putString("zeljenaTemperatura","20");
+        editor.putString("granUdaljenost","100");
+        editor.commit();
 
         currTempText = (TextView) activity.findViewById(R.id.currTempText);
         currTemp = (TextView) activity.findViewById(R.id.ispisTemp);
@@ -111,6 +122,14 @@ public class TemperatureActivityTest extends ActivityInstrumentationTestCase2<Te
         assertThat(returnBtn)
                 .isVisible()
                 .hasText(R.string.returnToMainActivityBtnText);
+    }
+
+    @UiThreadTest
+    final public void testT(){
+        String ret = "{\"temperatura\":20,\"prozorOZ\":1,\"vlaznost\":50,\"vrataOZ\":1}";
+        TemperatureActivity.SpajanjeServer mockedSpajanjeServer = mock(TemperatureActivity.SpajanjeServer.class);
+        when(mockedSpajanjeServer.doInBackground("temp")).thenReturn(ret);
+        assertThat(window).hasText("Prozor je otvoren.");
     }
 
 }
