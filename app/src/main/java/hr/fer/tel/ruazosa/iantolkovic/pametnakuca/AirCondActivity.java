@@ -165,11 +165,9 @@ public class AirCondActivity extends Activity {
         SharedPreferences prefs = getSharedPreferences(SettingsActivity.PREFS_NAME,MODE_PRIVATE);
         String udaljenostMemorija = prefs.getString("granUdaljenost","undefined");
 
-        if(udaljenostMemorija.compareTo("undefined") != 0){
-            ispisUdalj.setText(udaljenostMemorija);
-        } else{
-            ispisUdalj.setText("Nedefinirano.");
-        }
+
+        ispisUdalj.setText(udaljenostMemorija);
+
 
         float udaljenostMemorijaFloat = Float.parseFloat(udaljenostMemorija);
 

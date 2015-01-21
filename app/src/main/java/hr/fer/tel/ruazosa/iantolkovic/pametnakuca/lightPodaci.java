@@ -10,7 +10,10 @@ public class LightPodaci {
     }
 
     public double getPrisustvo(){
-        return Double.parseDouble(this.prisustvo);
+        double pris = Double.parseDouble(this.prisustvo);
+        if(pris!=1 && pris!=0)
+            return -1;
+        return pris;
     }
 
     public String getOsvjetljenje(){

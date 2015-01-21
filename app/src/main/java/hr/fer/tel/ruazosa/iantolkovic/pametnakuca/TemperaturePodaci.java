@@ -21,16 +21,20 @@ public class TemperaturePodaci {
     }
 
     public String getProzorOZ(){
+        if(prozorOZ!="0" && prozorOZ!="1")
+            return "Nema podataka";
         return prozorOZ;
     }
 
     public String getVrataOZ(){
+        if(vrataOZ!="0" && vrataOZ!="1")
+            return "Nema podataka";
         return vrataOZ;
     }
 
 
     public String toString(){
-        return "Temperatura: "+temperatura+", "+"Vlaznost" +","+"Prozor: "+prozorOZ+", "+"Vrata"+vrataOZ;
+        return "Temperatura: "+temperatura+", "+"Vlaznost: " +vlaznost+","+"Prozor: "+prozorOZ+", "+"Vrata: "+vrataOZ;
     }
 
 }

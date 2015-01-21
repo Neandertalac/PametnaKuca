@@ -10,6 +10,8 @@ public class AirCondPodaci {
     }
 
     public String getUdaljenost(){
+        if(Double.parseDouble(this.distance)<=0)
+            return "Nedefinirano";
         return this.distance;
     }
 
