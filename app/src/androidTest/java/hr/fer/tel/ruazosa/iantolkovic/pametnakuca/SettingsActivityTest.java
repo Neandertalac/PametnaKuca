@@ -11,8 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import static android.test.ViewAsserts.assertGroupContains;
-import static android.text.InputType.TYPE_CLASS_NUMBER;
-import static android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
 import static org.assertj.android.api.Assertions.assertThat;
 
 public class SettingsActivityTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
@@ -69,8 +67,7 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
     public void testIPAddress(){
         assertThat(IPAddress)
                 .isVisible()
-                .hasMaxLines(1)
-                .hasInputType(TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL);
+                .hasMaxLines(1);
     }
 
     @MediumTest

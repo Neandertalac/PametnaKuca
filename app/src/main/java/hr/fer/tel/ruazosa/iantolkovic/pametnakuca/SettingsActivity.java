@@ -12,9 +12,6 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.text.InputType.TYPE_CLASS_NUMBER;
-import static android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL;
-
 
 public class SettingsActivity extends Activity {
 
@@ -29,7 +26,6 @@ public class SettingsActivity extends Activity {
         final Button enterIpBtn = (Button) findViewById(R.id.enterIpBtn);
         final EditText ipAddress = (EditText) findViewById(R.id.ipAdress);
 
-        ipAddress.setInputType(TYPE_CLASS_NUMBER | TYPE_NUMBER_FLAG_DECIMAL);
 
         enterIpBtn.setOnClickListener(new View.OnClickListener() {
             @Override

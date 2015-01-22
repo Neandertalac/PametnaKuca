@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import static android.test.ViewAsserts.assertGroupContains;
-import static android.text.InputType.TYPE_TEXT_VARIATION_NORMAL;
 import static org.assertj.android.api.Assertions.assertThat;
 
 public class ConnectionErrorActivityTest extends ActivityInstrumentationTestCase2<ConnectionErrorActivity>{
@@ -79,7 +78,6 @@ public class ConnectionErrorActivityTest extends ActivityInstrumentationTestCase
     public void testEnterIP(){
         assertThat(enterIP)
                 .isVisible()
-                .hasInputType(TYPE_TEXT_VARIATION_NORMAL)
                 .hasMaxLines(1);
     }
 
